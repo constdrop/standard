@@ -18,6 +18,7 @@
   <a href="/docs/README-esla.md">Español (Latinoamérica)</a> •
   <a href="/docs/README-fr.md">Français</a> •
   <a href="/docs/README-iteu.md">Italiano (Italian)</a> •
+  <a href="/docs/README-jajp.md">日本語 (Japanese)</a> •
   <a href="/docs/README-kokr.md">한국어 (Korean)</a> •
   <a href="/docs/README-ptbr.md">Português (Brasil)</a> •
   <a href="/docs/README-zhcn.md">简体中文 (Simplified Chinese)</a> •
@@ -26,64 +27,70 @@
 
 <br>
 
-##校正及び自動コード修正を助けてくれるJavaScriptスタイルガイド
+## JavaScriptスタイルガイドと、校正、フォーマットツール
 
-このモジュールは、次の3つの方法で時間を節約することができます。
+このモジュールは、次の3つの方法であなたの(そして皆の!)時間を節約します。
 
-- **環境設定が必要ありません。**プロジェクトで一貫性のあるスタイルを適用するための最も簡単な方法です。ただ入れるだけです。
-- **自動的にコードフォーマットを合わせています。**`standard--fix`を実行すると、汚れたり、一貫性のないコードとの別れすることができます。
-- **スタイル問題とプログラマのエラーを早期に把握することができます。**レビューと貢献の間の関係を削除することにより、貴重なコードレビュー時間を節約することができます。
+- **設定が不要** プロジェクトで一貫性のあるスタイルを適用するための最も簡単な方法です。ただ入れるだけです。
+- **自動でコードをフォーマット** `standard --fix` を実行すると、乱雑なコードや一貫性のないコードと別れることができます。
+- **スタイルの問題とプログラマのエラーを早期発見** レビュワーとコントリビューターとの間の(無駄な)やり取りを排除することで、貴重なコードレビューの時間を節約します。
 
-作ることのために決定する必要がありません。`.eslintrc`、`.jshintrc`、`.jscsrc`ファイルを管理する必要がなく、すぐに可能です。
+作るために決めることはありません。`.eslintrc`や、`.jshintrc`、`.jscsrc`ファイルの管理も不要です。すぐに使うことができます。
 
-
-インストールする方法です。
+インストール方法:
 
 ```
 npm install standard--save-dev
 ```
 
-##ルール
+### オープンソースサポーター
 
-- ** 2カーンのスペースを使用します。** - インデント
-- **文字列に単一引用符を使用します。** - 不足しているところは除きます。
-- **使用されていない変数がないはずです。** - このことは、大量のバグを招く原因です。
-- **セミコロンがないはずです。** - [It's] [1] [fine] [2] [Really！] [3]
-- ** `（ '、' [`、or `` `` `のようにラインを起動しないでください。**
-   - セミコロン省略時は必ず問題が生じる可能性があります。 - *自動的にチェックすることができるように用意されています。*
-   - [More details] [4]
-- **キーワードの後に​​スペースを使用します。** `if（condition）{...}`
-- **関数名の後にスペースを使用します。** `function name（arg）{...}`
-- 常に `==`の代わりに `===`を使用します。 - ただし、 `null || undefined`は `obj == null`で確認することができます。
-- node.jsでerrパラメータは、常に処理する必要があります。
-- 常にブラウザ全域に `window`プレフィックスを付けます。 - `document`と` navigator`は大丈夫です。
-   - `open`、` length`、 `event`、` name`など不明なブラウザ全域を偶然使用することを防止します。
-- ** [より多くの利点] [5]があります。** - * `standard`を試してみてください！*
+[サポーターになろう!](https://feross.org/thanks/)
+
+## StandardJS — ルール
+
+- **2つのスペース** を使用します - インデント
+- **Stringにはシングルクォーテーション** を使用します - エスケープを避ける場合を除きます。
+- **使用されていない変数を無くす** - これは *大量* のバグを招く原因です。
+- **セミコロンを使わない** - [それは][1] [大丈夫][2] [本当に!][3]
+  - [詳細][4]
+- **キーワードの後に​​スペース** `if（condition）{...}`
+- **関数名の後にスペース** `function name（arg）{...}`
+- 常に `==`の代わりに `===`を使用します。 - ただし `null || undefined`は `obj == null`で比較しても構いません。
+- node.jsで `err`パラメータは、常に処理しなければなりません。
+- ブラウザのグローバルを宣言する場合には、ファイルの先頭に `/* global */`を記述します。
+  - `open`, `length`, `event`, `name`のような漠然とした名前をブラウザグローバルで偶発的に使用することを防ぎます
+  - 例: `/* global alert, prompt */`
+  - 例外: `window`, `document`, `navigator`
+- **[その他の良いルール][5]** - *さっそく `standard`を試してみてください!*
+
 
 [1]: http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding
 [2]: http://inimino.org/~inimino/blog/javascript_semicolons
 [3]: https://www.youtube.com/watch?v=gsfbh17Ax9I
-[4]: RULES.md#semicolons
-[5]: RULES.md#javascript-standard-style
+[4]: RULES-jajp.md#semicolons
+[5]: RULES-jajp.md#javascript-standard-style
 
-より良いアイデアを得るためには、JavaScript Standardスタイルで作成された[サンプルファイル]（https://github.com/expressjs/body-parser/blob/master/index.js）をご覧ください。または`standard`を使用している[何千ものプロジェクト]（https://raw.githubusercontent.com/standard/standard-packages/master/all.json）のいずれかを確認してください！
+より良いアイデアを得るためには、JavaScript Standard Styleで作成された
+[サンプルファイル](https://github.com/expressjs/body-parser/blob/master/index.js)を見てください。または `standard`を使用している
+[とてもたくさんのパッケージ](https://raw.githubusercontent.com/standard/standard-packages/master/all.json)の中のいずれかを見てみてください！
 
-##目次
+## 目次
 
 - クイックスタート
-  - [インストール]（＃インストール）
-  - [使い方]（＃使い方）
-  - [理解していたら、次の手順を実行します]（＃理解 - うまくいけば - 次の - 実行します）
-- 質疑応答
-  - [なぜJavaScript Standard Styleを使用したいですか？]（＃なぜ-JavaScript-Standard-Styleを - 使用 - でしょうか）
-  - [誰JavaScript Standard Styleを使うのですか？]（＃誰-JavaScript-Standard-Styleを - 使うのですか）
-  - [テキスト編集プラグインはありますか？]（＃テキスト - 編集 - プラグインが - か）
-  - [readmeに入れることができるバッジのロゴがありますか？]（＃readmeに - 入れ - こと - ある - バッジのロゴが - か）
-  - [私はルールが一致しません。変更は可能ですか？]（＃私は - ルールが - 適合 - ん - 変更 - 可能ですか）
-  - [しかし、このことは、実際のWeb標準はありません！]（＃しかし - この - は - 実際 - Web標準が - はありません）
-  - [自動的にフォーマットを合わせてくれるのがありますか？]（＃自動的に - フォーマットを - 合わせる - が - か）
-  - [どのようにすれば、ファイルを無視することができますか？]（＃どうすれば - ファイルを - 無視 - 数 - か）
-  - [どのようにすると、警告を非表示にすることができますか？]（＃どうすれば - 警告を - 非表示 - 数 - か）
+  - [インストール](#インストール)
+  - [使い方](#使い方)
+  - [理解していたら次にすること](#理解していたら次にすること)
+- FAQ
+  - [なぜJavaScript Standard Styleを使用するのですか？](#なぜ-JavaScript-Standard-Style-を使用するのですか？)
+  - [JavaScript Standard Styleを使うのはどのような人ですか？](#JavaScript-Standard-Style-を使うのはどのような人ですか？)
+  - [テキストエディタのプラグインはありますか？](#テキストエディタのプラグインはありますか？)
+  - [readmeに入れられるバッジはありますか？](#readmeに入れられるバッジはありますか？)
+  - [一致しないルールがあります。変更は可能ですか？](#一致しないルールがあります。変更は可能ですか？)
+  - [Web標準ではないではありませんか！](#Web標準ではないではありませんか！)
+  - [自動フォーマッターはありますか？](#自動フォーマッターはありますか？)
+  - [ファイルを無視するにはどうすればいいですか？](#ファイルを無視するにはどうすればいいですか？)
+  - [警告を非表示にするにはどうすればいいですか？](#警告を非表示にするにはどうすればいいですか？)
   - [全体namespaceを汚染させるライブラリを使用します。 「vaiable is not defined "エラーを回避するには、どうすればいいですか？]（＃全域-namespaceを - 汚染させる - ライブラリを - 使用し-vaiable-is-not-defined-エラーを - 防ぐために - どのように - する必要が - か）
   - [実験用JavaScript（ES Next）機能は、どのように使用か？]（＃実験-javascript-es-next-機能は - どのように - 使うのですか）
   - [javaScrptと他のFlowまたはtypescriptでも使用することができますか？]（＃javaScrptと - 他の-Flow-または-typescriptも - 使用 - することができ - ますか）
@@ -96,84 +103,82 @@ npm install standard--save-dev
   - [`standard`貢献はどうすればいい？]（＃standard-貢献は - どのように - か）
 - [ライセンス]（＃ライセンス）
 
-##インストール
+## インストール
 
 JavaScript Standard Styleを使用する最も簡単な方法は、Nodeコマンドプログラムを介してグローバルにインストールすることです。ターミナルで次のコマンドを実行します。
 
 ```bash
-$ npm install standard--global
+$ npm install standard --global
 ```
 
 または`standard`をローカルにインストールして、単一のプロジェクトで使用することができます。
 
 ```bash
-$ npm install standard--save-dev
+$ npm install standard --save-dev
 ```
 
 *メモ：上記のコマンドを実行するには、[Node.js]（http://nodejs.org）と[npm]（https://npmjs.com）がインストールされている必要があります。*
 
-##使い方
+## 使い方
 
-`standard`をインストールした後、` standard`プログラムを使用することができます。最も簡単な使用例は、現在の作業ディレクトリにあるすべてのJavaScriptファイルのスタイルを確認することです。
+`standard`をインストールした後、`standard`プログラムを使用することができます。最も簡単な使用例は、現在の作業ディレクトリにあるすべてのJavaScriptファイルのスタイルを確認することです。
 
 ```bash
 $ standard
-Error：Use JavaScript Standard Style
-  lib/ torrent.js：950：11：Expected「===」and instead saw」=='。
+Error: Use JavaScript Standard Style
+  lib/torrent.js:950:11: Expected '===' and instead saw '=='.
 ```
 
-You can optionally pass in a directory（or directories）using the glob pattern。Be
-sure to quote paths containing glob patterns so that they are expanded by
-`standard` instead of your shell：
-globパターンを使用してディレクトリ（またはディレクトリの）を選択的に渡すことができます。globパターンを含むパスを引用符で囲んでシェルの代わりに`standard`によって拡張されるようにすることができます。
+globパターンを使用して任意のディレクトリを渡すことができます。globパターンを含むパスは、シェルではなく`standard`によって展開されるように、引用符で囲んでください。
 
 ```bash
-$ standard"src/ util/**/*。js""test/**/*。js"
+$ standard "src/util/**/*.js" "test/**/*.js"
 ```
 
-**メモ**基本的に`standard`は`**/*。js`、`**/*。jsx`パターンと一致するすべてのファイルを検索しています。
+**メモ** 基本的に`standard`は、次のパターンと一致するすべてのファイルを検索しています:
+`**/*.js`, `**/*.jsx`
 
-##理解していたら、次の手順を実行します
+## 理解していたら次にすること
 
-1.`package.json`に次のコードを追加します。
+1. `package.json`に次のコードを追加します。
 
-  ```json
-  {
-    "name"："my-cool-package"、
-    「devDependencies"：{
-      "standard"："*"
-    }、
-    "scripts"：{
-      "test"："standard&& node my-tests.js"
-    }
+```json
+{
+  "name": "my-cool-package",
+  "devDependencies": {
+    "standard": "*"
+  },
+  "scripts": {
+    "test": "standard && node my-tests.js"
   }
-  ```
+}
+```
 
-2.`npm test`を実行するときに自動的にスタイルをチェックします。
+2. `npm test`を実行すると、自動的にスタイルがチェックされます。
 
   ```bash
   $ npm test
-  Error：Use JavaScript Standard Style
-    lib/ torrent.js：950：11：Expected「===」and instead saw」=='。
+  Error: Use JavaScript Standard Style
+    lib/torrent.js:950:11: Expected '===' and instead saw '=='.
   ```
 
-3. style意見のに対して、絶対フルリクエストを要求しないでください。
+3. これでプルリクエストにスタイルのフィードバックをすることは二度とありません!
 
-##なぜJavaScript Standard Styleを使用したいですか？
+## なぜJavaScript Standard Styleを使用するのですか？
 
-JavaScript Standard Styleの利点は、簡単であることです。誰も作業しているすべてのモジュール/プロジェクトの数百行styleの設定ファイルを維持しようとしません。もはや愚かな真似はやめて下さい。
+JavaScript Standard Styleの利点は、シンプルであることです。モジュールやプロジェクトごとの数百行のスタイル設定ファイルを、誰もメンテナンスしたくはないでしょう。それは狂気の沙汰です。
 
-このモジュールは、三つの方法で（または周辺の人々）の時間を節約することができます。
+このモジュールは、次の3つの方法であなたの(そして皆の!)時間を節約します。
 
-- **環境設定が必要ありません。**プロジェクトで一貫性のあるスタイルを適用するための最も簡単な方法です。ただ入れるだけです。
-- **自動的にコードフォーマットを合わせています。** `standard --fix`を実行すると、汚れたり、一貫性のないコードとの別れすることができます。
-- **スタイル問題とプログラマのエラーを早期に把握することができます。**レビューと貢献の間の関係を削除することにより、貴重なコードレビュー時間を節約することができます。
+- **設定が不要** プロジェクトで一貫性のあるスタイルを適用するための最も簡単な方法です。ただ入れるだけです。
+- **自動でコードをフォーマット** `standard --fix` を実行すると、乱雑なコードや一貫性のないコードと別れることができます。
+- **スタイルの問題とプログラマのエラーを早期発見** レビュワーとコントリビューターとの間の(無駄な)やり取りを排除することで、貴重なコードレビューの時間を節約します。
 
-`standard`スタイルを採用するということは、個人的なスタイルよりもコード明快とコミュニティコラボレーションの重要性を優先とすることを意味します。これは、プロジェクト開発の文化に100％妥当でないかもしれないが、オープンソースは、初心者に敵対的な場所になることがあります。明確で自動化された貢献を期待するほどのプロジェクトがより健康的になります。
+`standard`スタイルを採用することは、個人的なスタイルよりも、コードの明瞭性とコミュニティの慣習を優先することを意味します。これは、100%のプロジェクトや開発における文化に合理的とは言えないかもしれません。しかしながらオープンソースは、初心者にとって好ましくない場所になることがあります。明瞭化と自動化を行ったコントリビューターの割合は、プロジェクトをより健康的にするでしょう。
 
-##人のJavaScript Standard Styleを使うのですか？
+## JavaScript Standard Styleを使うのはどのような人ですか？
 
-周辺には多くの人々！
+多くの人々が使っています!
 
 [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/npm.png>](https://www.npmjs.com) | [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/github.png>](https://github.com) | [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/opbeat.png>](https://opbeat.com) | [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/nearform.png>](http://www.nearform.com) | [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/brave.png>](https://www.brave.com) |
 |---|---|---|---|---|
@@ -196,92 +201,96 @@ JavaScript Standard Styleの利点は、簡単であることです。誰も作�
 [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/rentograph.png>](https://rentograph.com) | [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/eaze.png>](https://www.eaze.com) | [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/ctrl-alt-deseat.png>](https://www.ctrlaltdeseat.com) | | |
 |---|---|---|---|---|
 
-会社以外の多くのコミュニティのメンバーは、ここに記載さには、[あまりにも多くの]（https://raw.githubusercontent.com/standard/standard-packages/master/all.json）パッケージが`standard`を使用します。
+会社以外の多くのコミュニティのメンバーが、ここに記載した[とてもたくさんのパッケージ](https://raw.githubusercontent.com/standard/standard-packages/master/all.json)で`standard`を使っています。
 
-また、GitHubの[Clean Code Linter]（https://github.com/showcases/clean-code-linters）ショーケースでも見ることができます。
+また`standard`は、GitHubの[Clean Code Linter](https://github.com/showcases/clean-code-linters)ショーケースで首位のlinterです。
 
-##テキスト編集プラグインはありますか？
+## テキストエディタのプラグインはありますか？
 
 まず、`standard`をインストールします。その後、エディタに適切なプラグインをインストールしてください。
 
 ### Sublime Text
 
-**[Package Control][sublime-1]**を使用して、**[SublimeLinter][sublime-2]**と**[SublimeLinter-contrib-standard][sublime-3]**をインストールします。
+**[Package Control][sublime-1]** を使用して、 **[SublimeLinter][sublime-2]** と **[SublimeLinter-contrib-standard][sublime-3]** をインストールします。
 
-保存時に自動的にフォーマットを適用するには、**[StandardFormat][sublime-4]**をインストールしてください。
+保存時に自動的にフォーマットを適用するには、 **[StandardFormat][sublime-4]** をインストールしてください。
 
-[sublime-1]：https://packagecontrol.io/
-[sublime-2]：http://www.sublimelinter.com/en/latest/
-[sublime-3]：https://packagecontrol.io/packages/SublimeLinter-contrib-standard
-[sublime-4]：https://packagecontrol.io/packages/StandardFormat
+[sublime-1]: https://packagecontrol.io/
+[sublime-2]: http://www.sublimelinter.com/en/latest/
+[sublime-3]: https://packagecontrol.io/packages/SublimeLinter-contrib-standard
+[sublime-4]: https://packagecontrol.io/packages/StandardFormat
 
 ### Atom
 
-** [linter-js-standard] [atom-1] **をインストールします。
+**[linter-js-standard][atom-1]** をインストールします。
 
-または** [linter-js-standard-engine] [atom-4] **をインストールすることができます。 `standard`バージョンをバンドルする代わりに、現在のプロジェクトにインストールされてバージョンを自動的に使用します。また、** [standard-engine] [atom-5] **をベースにした他のlinterで動作します。
+または **[linter-js-standard-engine][atom-4]** をインストールすることもできます。その場合、バンドルされたバージョンの `standard`の代わりに、現在のプロジェクトにインストールされたバージョンを自動的に使用します。また **[standard-engine][atom-5]** をベースにした他のlinterでも動作します。
 
-保存時に自動的にフォーマットを適用するには、** [standard-formatter] [atom-2] **をインストールします。スニペットの場合** [standardjs-snippets] [atom-3] **をインストールします。
+自動的にフォーマットを適用するには、 **[standard-formatter][atom-2]** をインストールします。スニペットの場合 **[standardjs-snippets][atom-3]** をインストールします。
 
-[atom-1]：https://atom.io/packages/linter-js-standard
-[atom-2]：https://atom.io/packages/standard-formatter
-[atom-3]：https://atom.io/packages/standardjs-snippets
-[atom-4]：https://atom.io/packages/linter-js-standard-engine
-[atom-5]：https://github.com/Flet/standard-engine
+[atom-1]: https://atom.io/packages/linter-js-standard
+[atom-2]: https://atom.io/packages/standard-formatter
+[atom-3]: https://atom.io/packages/standardjs-snippets
+[atom-4]: https://atom.io/packages/linter-js-standard-engine
+[atom-5]: https://github.com/Flet/standard-engine
 
 ### Visual Studio Code
 
-** [vscode-standardjs] [vscode-1] **をインストールします。 （自動フォーマットをサポートします。）
+**[vscode-standardjs][vscode-1]** をインストールします。(自動フォーマットをサポートします。)
 
-JSスニペットの場合** [vscode-standardjs-snippets] [vscode-2] **をインストールします。 Reactスニペットの場合** [vscode-react-standard] [vscode-3] **をインストールします。
+JSスニペットの場合は **[vscode-standardjs-snippets][vscode-2]** をインストールします。Reactスニペットの場合は **[vscode-react-standard][vscode-3]** をインストールします。
 
-[vscode-1]：https://marketplace.visualstudio.com/items/chenxsan.vscode-standardjs
-[vscode-2]：https://marketplace.visualstudio.com/items?itemName=capaj.vscode-standardjs-snippets
-[vscode-3]：https://marketplace.visualstudio.com/items/TimonVS.ReactSnippetsStandard
+[vscode-1]: https://marketplace.visualstudio.com/items/chenxsan.vscode-standardjs
+[vscode-2]: https://marketplace.visualstudio.com/items?itemName=capaj.vscode-standardjs-snippets
+[vscode-3]: https://marketplace.visualstudio.com/items/TimonVS.ReactSnippetsStandard
 
 ### Vim
 
-**[ale][vim-1]**をインストールします。
-
-For automatic formatting on save、add these lines to`.vimrc`：
-
-保存時に自動的にフォーマットを適用するには、コードを`.vimrc`に追加します。
+**[ale][vim-1]** をインストールし、次のコードを`.vimrc`に追加します。
 
 ```vim
-autocmd bufwritepost*.js silent！standard--fix％
-set autoread
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+let g:ale_fixers = {'javascript': ['standard']}
 ```
 
-考慮すべき代替プラグインでは、[neomake][vim-2]と[syntastic][vim-3]があり、両方の標準のサポートが組み込まれています。（さらに設定が必要になる場合があります）
+これは、eslintとの衝突を避け、`standard`をjavascriptファイル用の唯一のlinterおよびfixerとして設定します。保存時に自動的にフォーマットを適用するには、次のコードを`.vimrc`に追加します。
+```vim
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+```
 
-[vim-1]：https://github.com/w0rp/ale
-[vim-2]：https://github.com/neomake/neomake
-[vim-3]：https://github.com/vim-syntastic/syntastic
+考えられる代替プラグインとしては、[neomake][vim-2]と[syntastic][vim-3]があり、両方とも`standard`のサポートが組み込まれています。(追加設定が必要になる場合があります)
+
+[vim-1]: https://github.com/w0rp/ale
+[vim-2]: https://github.com/neomake/neomake
+[vim-3]: https://github.com/vim-syntastic/syntastic
 
 ### Emacs
 
-**[Flycheck][emacs-1]**をインストールして、**[manual][emacs-2]**を確認して、プロジェクトで有効にする方法を確認してください。
+**[Flycheck][emacs-1]** をインストールして、**[manual][emacs-2]** を見てプロジェクトでこれを有効にする方法を確認してください。
 
-[emacs-1]：http://www.flycheck.org
-[emacs-2]：http://www.flycheck.org/en/latest/user/installation.html
+[emacs-1]: http://www.flycheck.org
+[emacs-2]: http://www.flycheck.org/en/latest/user/installation.html
 
 ### Brackets
 
-extension registryで**["Standard Code Style"][brackets-1]**を検索して「Install」をクリックします。
+extension registryで **["Standard Code Style"][brackets-1]** を検索して「Install」をクリックします。
 
-[brackets-1]：https://github.com/ishamf/brackets-standard/
+[brackets-1]: https://github.com/ishamf/brackets-standard/
 
 ### WebStorm（PhpStorm、IntelliJ、RubyMine、JetBrains、etc.）
 
-WebStromは`standard`が直接IDEで使用可能と[基本的なサポートに関する最近の発表]（https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/）しました。
+WebStromは`standard`がIDEで直接使用可能と[標準サポートに関する発表](https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/)をしました。
 
-もし、手動で`standard`を構成するには、[ガイド]（[webstorm-1]）を実行します。これPhpStorm、IntelliJ、RubyMineなど、すべてのJetBrains製品に適用されます。
+もし、手動で`standard`を構成するには、[ガイド]([webstorm-1])を参照してください。PhpStorm、IntelliJ、RubyMineなど、すべてのJetBrains製品は同様です。
 
-[webstorm-1]：docs/ webstorm.md
+[webstorm-1]: docs/webstorm.md
 
-## readmeに入れることができるバッジのロゴがありますか？
+## readmeに入れられるバッジはありますか？
 
-はい！プロジェクトで`standard`を使用する場合、readmeにはバッジのいずれかを含めて、コードがstandardスタイルを使用していることを人々に知らせることができます。
+Yes! プロジェクトで`standard`を使用する場合、readmeにバッジのいずれかを入れて、コードがstandardスタイルを使用していることを人々に知らせることができます。
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
@@ -295,89 +304,90 @@ WebStromは`standard`が直接IDEで使用可能と[基本的なサポートに�
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 ```
 
-##私は、ルールが一致しません。変更は可能ですか？
+## 一致しないルールがあります。変更は可能ですか？
 
-なりません。 `standard`の全体的なポイントは、コードスタイルの[bikeshedding] [bikeshedding]を避けることによって、時間を節約することです。タブとスペースなどについては、オンラインで多くの議論があるので、解決されないでしょう。これらの議論は、何も得られないようにします。最終的には `何かを選ばなければなら`です。それは `standard`の哲学です。これは `だけ何かを選択してください 'という意見です。うまくいけば、ユーザーが自分の意見を守ることについての価値を見ることを願って。
+No. `standard`の大きなポイントは、コードスタイルの[自転車置場の議論][自転車置場の議論]を避けることによって、時間を節約することです。タブとスペースなどについては、オンラインで多くの議論があり、解決されることはないでしょう。これらの議論は、何かを得るときに邪魔をします。最終的には '何かを選ぶ' 必要があり、それが `standard`の哲学のすべてです。'何かを選ぶ' 賢明な意見の集合体です。場合によっては、ユーザーが自分の意見を守る上での価値を見つけるでしょう。
 
-何百ものESLintルールを個別に構成する場合 `eslint`を直接[eslint-config-standard]（https://github.com/standard/eslint-config-standard）と一緒に使用して変更を一番上に配置することがすることができます。
-[ `standard-eject`]（https://github.com/josephfrazier/standard-eject）は` standard`で `eslint`と` eslint-config-standard`への移行を支援することができます。
+何百ものESLintルールを個別に構成する場合、`eslint`を直接
+[eslint-config-standard](https://github.com/standard/eslint-config-standard)と一緒に使用して変更を一番上に配置することがすることができます。
+[`standard-eject`](https://github.com/josephfrazier/standard-eject)は、`standard`から`eslint`と` eslint-config-standard`への移行を支援することができます。
 
-ヒント：標準を使用して続行します。あなたの時間を消費している実用的な問題を解決してください！ ：P
+ヒント: `standard`を使用し実行すれば、あなたの時間を消費している現実的な問題が解決します! :P
 
-[bikeshedding]：https://www.freebsd.org/doc/en/books/faq/misc.html#bikeshed-painting
+[自転車置場の議論]: https://www.freebsd.org/doc/en/books/faq/misc.html#bikeshed-painting
 
-##しかし、このことは、実際のWeb標準はありません！
+## Web標準ではないではありませんか！
 
-もちろん、標準ではありません！ここで提示されたスタイルは、公式Web標準のグループと関連がないので、 `ECMA / standard`ではなく、` standard / standard`という理由です。
+もちろん、標準ではありません！ここで提示されたスタイルは、公式Web標準のグループと関連がないので、`ECMA/standard`ではなく、`standard/standard`というリポジトリになっています。
 
-「standard」という言葉は、「web standard "以上の意味を持っています:-)
+「standard」という言葉は、「web standard」以上の意味を持っています :-)
 
-例えば、
-- このモジュールは、私たちのコードを高レベルの品質を維持するのに役立ちます。
-- このモジュールは、新しい貢献者がいくつかの基本的なスタイルの標準に準拠するようにします。
+例えば:
+- このモジュールは、私たちのコードをハイレベル *standard品質* に維持するのに役立ちます。
+- このモジュールは、新しいコントリビューターが基本的な *standardスタイル* に準拠するようにします。
 
-##自動的にフォーマットを合わせてくれることがありますか？
+## 自動フォーマッターはありますか？
 
-はい！ほとんどの問題を自動的に修正するには、 `standard --fix`を使用することができます。
+Yes! `standard --fix`を使用することで、ほとんどの問題を自動的に修正することができます。
 
-`standard --fix`は最大の便宜のために` standard`に内蔵されています。ほとんどの問題は修正できますが、いくつかのエラー（エラー処理を忘れてしまうこと）は、手動で解決する必要があります。
+`standard --fix`は最高の利便性のために`standard`に内蔵されています。ほとんどの問題が修正できますが、いくつかのエラー(エラー処理を忘れてしまうようなこと)は、手動で修正する必要があります。
 
-時間を節約するために `standard`は自動的に変更できる問題を発見すると、「` Run standard --fix to automatically fix some problems`」メッセージを出力します。
+時間節約のために、`standard`は自動的に変更できる問題を発見すると、「`Run standard --fix to automatically fix some problems`」メッセージを出力します。
 
-##どうすればファイルを無視することができますか？
+## ファイルを無視するにはどうすればいいですか？
 
-特定のパス（`node_modules/'、' coverage/`、`vendor/`、`*.min.js`、` bundle.js`、`.git/`のように``で始まるファイル/フォルダ）は自動的に無視されます。
+特定のパス (`node_modules/`, `coverage/`, `vendor/`, `*.min.js`, `bundle.js`と、`.git/`のように`.`で始まるファイル/フォルダ) は自動的に無視されます。
 
-プロジェクトのルート`.gitignore`ファイルのパスが自動的に無視されます。
+プロジェクトのルートの`.gitignore`ファイルに記述されたパスも自動的に無視されます。
 
-時には追加フォルダまたは特定の縮小ファイルを無視する必要があります。これを行うには、`package.json`に` standard.ignore`属性を追加します。
+追加フォルダや特定の最小化ファイルを無視したいことがあります。これを行うには、`package.json`に`standard.ignore`属性を追加します。
 
 ```json
-"standard"：{
-  "ignore"：[
-    "**/ out/"、
-    "/ lib/ select2/"、
-    "/ lib/ ckeditor/"、
+"standard": {
+  "ignore": [
+    "**/out/",
+    "/lib/select2/",
+    "/lib/ckeditor/",
     "tmp.js"
   ]
 }
 ```
 
-##どのようにすると、警告を非表示にすることができますか？
+## 警告を非表示にするにはどうすればいいですか？
 
 まれに、規則に違反して `standard`によって生成された警告を非表示にする必要があります。
 
-JavaScriptの標準スタイルは、[ESLint]（http://eslint.org/）を使用し、ESLintを直接使用した場合、一般的に、警告を非表示にすることができます。
+JavaScript Standard Styleは[ESLint](http://eslint.org/)を使用しており、ESLintを直接使用した場合、一般的に、警告を非表示にすることができます。
 
-詳細な出力を得るために（無視特定のルールの名前を見つけることができるように）、以下を実行します。
+詳細な出力を得るために(無視する特定のルール名を見つけることができるように)、以下を実行します。
 
-`` `bash
+```bash
 $ standard --verbose
-Error：Use JavaScript Standard Style
-  routes / error.js：20：36：「file」was used before it was defined。 （no-use-before-define）
-`` `
+Error: Use JavaScript Standard Style
+  routes/error.js:20:36: 'file' was used before it was defined. (no-use-before-define)
+```
 
-特定の行で**すべてのルール**を無効にすることができます。
+特定の行で **すべてのルール** を無効にすることができます。
 
-`` `js
+```js
 file = 'I know what I am doing' // eslint-disable-line
-`` `
+```
 
-あるいは、特定の行で** `" no-use-before-define "`ルールのみ**無効にすることができます。
+あるいは、特定の行で `"no-use-before-define"`ルール **のみ** 無効にすることができます。
 
-`` `js
+```js
 file = 'I know what I am doing' // eslint-disable-line no-use-before-define
-`` `
+```
 
-`" no-use-before-define "`ルールを複数行に適用することができます。
+あるいは、 **複数の行** で `"no-use-before-define"`ルールを無効にすることができます。
 
-`` `js
-/ * eslint-disable no-use-before-define * /
-console.log（ 'offending code goes here ...」）
-console.log（ 'offending code goes here ...」）
-console.log（ 'offending code goes here ...」）
-/ * eslint-enable no-use-before-define * /
-`` `
+```js
+/* eslint-disable no-use-before-define */
+console.log('offending code goes here...')
+console.log('offending code goes here...')
+console.log('offending code goes here...')
+/* eslint-enable no-use-before-define */
+```
 
 ##全域namespaceを汚染させるライブラリを使用します。「vaiable is not defined"エラーを回避するには、どうすればいいですか？
 
