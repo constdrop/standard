@@ -91,11 +91,11 @@ npm install standard--save-dev
   - [自動フォーマッターはありますか？](#自動フォーマッターはありますか？)
   - [ファイルを無視するにはどうすればいいですか？](#ファイルを無視するにはどうすればいいですか？)
   - [警告を非表示にするにはどうすればいいですか？](#警告を非表示にするにはどうすればいいですか？)
-  - [全体namespaceを汚染させるライブラリを使用します。 「vaiable is not defined "エラーを回避するには、どうすればいいですか？]（＃全域-namespaceを - 汚染させる - ライブラリを - 使用し-vaiable-is-not-defined-エラーを - 防ぐために - どのように - する必要が - か）
-  - [実験用JavaScript（ES Next）機能は、どのように使用か？]（＃実験-javascript-es-next-機能は - どのように - 使うのですか）
-  - [javaScrptと他のFlowまたはtypescriptでも使用することができますか？]（＃javaScrptと - 他の-Flow-または-typescriptも - 使用 - することができ - ますか）
-  - [Mocha、Jasmine、QUnitなどはいかがでしょうか？]（＃mocha-jasmine-qunit-などは - いかがでしょうか）
-  - [Web Workesはいかがですか？]（＃web-workesは - いかがでしょうか）
+  - [グローバルnamespaceを汚染させるライブラリを使用します。「variable is not defined」エラーを回避するにはどうすればいいですか？](#グローバルnamespaceを汚染させるライブラリを使用します。「variable-is-not-defined」エラーを回避するにはどうすればいいですか？)
+  - [実験版JavaScript(ES Next)の新機能はどのように使用しますか？](#実験版JavaScript-ES-Next-の新機能はどのように使用しますか？)
+  - [FlowやTypeScriptのようなJavascript派生言語でも使用することができますか？](#FlowやTypeScriptのようなJavascript派生言語でも使用することができますか？)
+  - [Mocha、Jasmine、QUnitなどはどうすればいいですか？](#Mocha、Jasmine、QUnitなどはどうすればいいですか？)
+  - [Web WorkesとService Workersはどうすればいいですか？](#Web-WorkesとService-Workersはどうすればいいですか？)
   - [MarkdownまたはHTMLファイル内のコードを確認することができますか？]（＃markdown-または-html-ファイル - 内部の - コードを - 確認 - 数 - か）
   - [Git`pre-commit` hookはありますか？]（＃git-pre-commit-hookが - か）
   - [出力の両方を、華やかできれいに作成するにはどうすればいいですか？]（＃出力を - すべて - カラフルで - きれい - 作成するには - どのように - する必要が - か）
@@ -117,7 +117,7 @@ $ npm install standard --global
 $ npm install standard --save-dev
 ```
 
-*メモ：上記のコマンドを実行するには、[Node.js]（http://nodejs.org）と[npm]（https://npmjs.com）がインストールされている必要があります。*
+*Memo: 上記のコマンドを実行するには、[Node.js]（http://nodejs.org）と[npm]（https://npmjs.com）がインストールされている必要があります。*
 
 ## 使い方
 
@@ -389,160 +389,165 @@ console.log('offending code goes here...')
 /* eslint-enable no-use-before-define */
 ```
 
-##全域namespaceを汚染させるライブラリを使用します。「vaiable is not defined"エラーを回避するには、どうすればいいですか？
+## グローバルnamespaceを汚染させるライブラリを使用します。「variable is not defined」エラーを回避するにはどうすればいいですか？
 
-いくつかのパッケージ（例えば、`mocha`）は、グローバルオブジェクト（悪い形！）に機能（例えば、` describe`、`it`）を指定します。この関数は、定義されていないか、コードのどこでも必要とされることがありますので、 `standard`で定義されていない変数を使用していると警告して（一般的には、このルールは、タイプミスをキャッチするために役立ちます）。しかし、私たちは、このグローバル変数について、これを無効にしようとします。
+いくつかのパッケージ(例えば、`mocha`)は、関数(例えば、`describe`, `it`)をグローバルオブジェクトに配置します(悪い形!)。これらの関数が定義されていないか、コードのどこかで`require`されていない間、`standard`は定義されていない変数を使用していると警告します(一般的には、このルールは、タイプミスをキャッチするために役立ちます)。しかし、これらのグローバル変数については、エラーを無効にしたいところです。
 
-`standard`（コードを読んでいる人だけでなく、）で特定の変数がコード内でグローバルであることがわかるように、ファイルの先頭に追加してください。
+`standard`(だけでなくコードを読んでいる人)が、特定の変数がコード内でグローバルであることがわかるように、以下のコードをファイルの先頭に追加してください。
 
 ```js
-/* global myVar1、myVar2*/
+/* global myVar1, myVar2 */
 ```
 
-数百個のファイルがある場合は、すべてのファイルにコメントを追加していないことをお勧め。この場合は、次を実行します。
+もしも数百個のファイルがある場合は、すべてのファイルにコメントを追加したくはないと思います。その場合は、次のコードを実行します。
 
 ```bash
-$ standard--global myVar1--global myVar2
+$ standard --global myVar1 --global myVar2
 ```
 
 あるいは`package.json`に次のコードを追加します。
 
 ```json
 {
-  "standard"：{
-    "globals"：["myVar1"、"myVar2"]
+  "standard": {
+    "globals": [ "myVar1", "myVar2" ]
   }
 }
 ```
 
-*ノート：`global`と` globals`は同じです。
+*Note: `global`と`globals`は同じです。*
 
-##実験用JavaScript（ES Next）機能は、どのように使用か？
+## 実験版JavaScript(ES Next)の新機能はどのように使用しますか？
 
-`standard`は提案プロセスの「ステップ4」の言語機能の提案を含む、最新のECMAScript機能ES8（ES2017）をサポートします。
+`standard`は提案プロセスの「Stage 4」にある言語機能の提案を含む、最新のECMAScript ES8(ES2017)の新機能をサポートします。
 
-実験用の言語機能をサポートするために、`standard`は、カスタムJavaScriptパーサを指定することをサポートします。カスタムパーサーを使用する前に、追加された複雑さが価値があることを考慮してください。
+実験版の言語機能をサポートするために、`standard`はカスタムJavaScriptパーサの指定をサポートします。カスタムパーサーを使用する前に、追加された複雑さがそれに値するかどうかを考慮してください。
 
-カスタムパーサーを使用する前に、npmモジュールをインストールします。
+カスタムパーサーを使用するには、npmモジュールをインストールします。
 
 ```bash
-npm install babel-eslint--save-dev
+npm install babel-eslint --save-dev
 ```
 
-次の手順を実行します。
+そして次のコードを実行します。
 
 ```bash
-$ standard--parser babel-eslint
+$ standard --parser babel-eslint
 ```
 
 あるいは、`package.json`に次のコードを追加します。
 
 ```json
 {
-  "standard"：{
-    "parser"："babel-eslint"
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
 ```
 
-`standard」は、グローバルにインストールされると（つまり、` npm install standard--global`）、`babel-eslint`を` npm install babel-eslint--global`と一緒にインストールしてください。
+`standard`がグローバルにインストールされている場合(つまり、`npm install standard --global`)、`babel-eslint`も同様に`npm install babel-eslint --global`としてグローバルにインストールしてください。
 
-## javaScrptと他のFlowまたはtypescriptでも使用することができますか？
+## FlowやTypeScriptのようなJavascript派生言語でも使用することができますか？
 
-`standard`は、最新のECMAScriptの機能をサポートします。しかし、FlowとTypeScriptは新しい構文を言語に追加する必要があるため、すぐに使用することができません。
+`standard`は、最新のECMAScriptの機能をサポートします。しかし、FlowやTypeScriptは新しい構文を言語に追加しているため、すぐに使用することができません。
 
-JavaScript言語のバリエーションをサポートするために、 `standard`は変更された構文を処理することができるESLintプラグインだけでなく、カスタムJavaScriptパーサを指定することをサポートします。 JavaScript言語のバリエーションを使用する前に追加された複雑さの価値があることを考慮してください。
+JavaScript派生言語をサポートするために、`standard`は変更された構文を処理するESLintプラグインだけでなく、カスタムJavaScriptパーサの指定をサポートします。 JavaScript派生言語を使用する前に、追加された複雑さがそれに値するかどうかを考慮してください。
 
 ### Flow
 
-Flowを使用するには、 `babel-eslint`をパーサとして使用して` eslint-plugin-flowtype`をプラグインとして使用して `standard`を実行する必要があります。
+Flowを使用するには、 `babel-eslint`をパーサとして、`eslint-plugin-flowtype`をプラグインとして`standard`を実行する必要があります。
 
-`` `bash
+```bash
 npm install babel-eslint eslint-plugin-flowtype --save-dev
-`` `
+```
 
-以下を実行します。
+そして次のコードを実行します。
 
-`` `bash
+```bash
 $ standard --parser babel-eslint --plugin flowtype
-`` `
+```
 
-または、 `package.json`に次のコードを追加します。
+あるいは、`package.json`に次のコードを追加します。
 
-`` `json
+```json
 {
-  "standard"：{
-    "parser"： "babel-eslint"、
-    "plugins"：[ "flowtype"]
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": [ "flowtype" ]
   }
 }
-`` `
+```
 
-*注意： `plugin`と` plugins`は同じです。*
+*Note: `plugin`と`plugins`は同じです。*
 
-もし `standard`がグローバルにインストールすると、（つまり、` npm install standard - global`）、 `babel-eslint`と` eslint-plugin-flowtype`も一緒にインストールする必要があります。 `npm install babel-eslint eslint-plugin-flowtype --global`。
+`standard`がグローバルにインストールされている場合(つまり、`npm install standard --global`)、`babel-eslint`と`eslint-plugin-flowtype`も同様に、`npm install babel-eslint eslint-plugin-flowtype --global`としてグローバルにインストールしてください。
 
 ### TypeScript
 
-TypeScriptを使用するには、 `typescript-eslint-parser`をパーサに` standard`を、プラグインに `eslint-plugin-typescript`を実行して、標準lint` * .ts`ファイルに送信します。 （デフォルトではないから）
+TypeScriptを使用するには、`typescript-eslint-parser`をパーサとして、`eslint-plugin-typescript`をプラグインとして、`*.ts`ファイルを標準に含めるものとしてlintに渡します。(デフォルトではないため)
 
-`` `bash
+```bash
 npm install typescript-eslint-parser eslint-plugin-typescript --save-dev
-`` `
+```
 
-以下を実行します。
+そして次のコードを実行します。
 
+```bash
+$ standard --parser typescript-eslint-parser --plugin typescript *.ts
+```
 
-`` `bash
-$ standard --parser typescript-eslint-parser --plugin typescript * .ts
-`` `
+あるいは、`package.json`に次のコードを追加します。
 
-または、 `package.json`に次のコードを追加します。
-
-`` `json
+```json
 {
-  "standard"：{
-    "parser"： "typescript-eslint-parser"、
-    "plugins"：[ "typescript"]
+  "standard": {
+    "parser": "typescript-eslint-parser",
+    "plugins": [ "typescript" ]
   }
 }
-`` `
+```
 
-`package.json`を使用すると、以下のように実行することができます。
+`package.json`を使用する場合、以下のコードを実行します。
 
-`` `bash
-standard * .ts
-`` `
+```bash
+standard *.ts
+```
 
-`standard`グローバルにインストールされている場合（つまり、` npm install standard --global`） `npm install typescript-eslint-parser eslint-plugin-typescript --global`を使用して` eslint-plugin-flowtype`と `typescript -eslint-parser`をグローバルにインストールする必要があります。
+`standard`がグローバルにインストールされている場合(つまり、`npm install standard --global`)、`typescript-eslint-parser`と`eslint-plugin-typescript`も同様に、`npm install typescript-eslint-parser eslint-plugin-typescript --global`としてグローバルにインストールしてください。
 
-## Mocha、Jasmine、QUnitなどはいかがでしょうか？
+## Mocha、Jasmine、QUnitなどはどうすればいいですか？
 
-テストファイルでmochaをサポートするには、テストファイルの先頭に以下を追加します。
+テストファイルでmochaをサポートするには、テストファイルの先頭に次のコードを追加します。
 
-`` `js
-/ * eslint-env mocha * /
-`` `
+```js
+/* eslint-env mocha */
+```
 
-あるいは、以下を実行します。
+あるいは、次のコードを実行します。
 
-`` `bash
+```bash
 $ standard --env mocha
-`` `
+```
 
-`mocha`は` jasmine`、 `qunit`、` phantomjs`のいずれかになることがあります。全リストを表示するにはESLintの[specifying environments（仕様書）]（http://eslint.org/docs/user-guide/configuring.html#specifying-environments）を確認してください。このような環境で使用できるグローバルのリストを表示するには、[globals]（https://github.com/sindresorhus/globals/blob/master/globals.json）npmモジュールを確認してください。
+`mocha`は`jasmine`, `qunit`, `phantomjs`などのいずれか1つになります。全てのリストは、ESLintの[specifying environments](http://eslint.org/docs/user-guide/configuring.html#specifying-environments)を確認しください。これらの環境のうちグローバルで使用できるもののリストは、[globals](https://github.com/sindresorhus/globals/blob/master/globals.json) npmモジュールを確認してください。
 
-**注： `env`と` envs`は同じです。**
+*Note: `env`と`envs`は同じです。*
 
-## Web Workesはいかがでしょうか？
+## Web WorkesとService Workersはどうすればいいですか？
 
-適用しようとするファイルの先頭に次のコメントコードを追加します。
+Web Workerファイルの先頭に次のコードを追加します。
 
-`` `js
-/ * eslint-env serviceworker * /
-`` `
+```js
+/* eslint-env worker */
+```
 
-これは `standard`（コードを読んでいる人だけでなく、）がweb workerコードで`自分 `グローバル（global）であることを知ることができようになります。
+`standard`(だけでなくコードを読んでいる人)が、`self`がWeb Workerのコード内でグローバルであることがわかるようになります。
+
+Service Workerでは、次のようになります。
+
+```js
+/* eslint-env serviceworker */
+```
 
 ## MarkdownまたはHTMLファイル内のコードを確認することができますか？
 
