@@ -5,6 +5,7 @@
   <a href="/docs/RULES-esla.md">Español (Latinoamérica)</a> •
   <a href="/docs/RULES-fr.md">Français</a> •
   <a href="/docs/RULES-iteu.md">Italiano (Italian)</a> •
+  <a href="/docs/RULES-jajp.md">日本語 (Japanese)</a> •
   <a href="/docs/RULES-kokr.md">한국어 (Korean)</a> •
   <a href="/docs/RULES-ptbr.md">Português (Brasil)</a> •
   <a href="/docs/RULES-zhcn.md">简体中文 (Simplified Chinese)</a> •
@@ -13,309 +14,321 @@
 
 [![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
-これはJavaScript[standard]（https://github.com/standard/standard）ルールです。
+これは[standard](https://github.com/standard/standard)のJavaScriptのルールをまとめたものです。
 
-`standard`について学ぶ最良の方法は、単にインストールし、コードに試してみることです。
+`standard`について学ぶ最良の方法は、インストールしてあなたのコードで試してみることです。
 
-##ルール
+## ルール
 
-* インデント時**2カーンのスペースの使用**を使用します。
+* インデントには **2つのスペース** を使用します。
 
-  eslint：[`indent`]（http://eslint.org/docs/rules/indent）
+  eslint: [`indent`](http://eslint.org/docs/rules/indent)
 
   ```js
-  function hello（name）{
-    console.log（ 'hi'、name）
+  function hello (name) {
+    console.log('hi', name)
   }
   ```
 
-* エスケープを避けるために**の文字列に単一引用符**を使用します。
+* エスケープを避けるために **文字列にはシングルクォーテーション** を使用します。
 
-  eslint：[`quotes`]（http://eslint.org/docs/rules/quotes）
+  eslint: [`quotes`](http://eslint.org/docs/rules/quotes)
 
   ```js
-  console.log（ 'hello there」）
-  $（"<div class= 'box'>"）
+  console.log('hello there')
+  $("<div class='box'>")
   ```
 
-* **使用していない変数を定義しないでください。**
+* **使用しない変数を定義しません。**
 
-  eslint：[`no-unused-vars`]（http://eslint.org/docs/rules/no-unused-vars）
+  eslint: [`no-unused-vars`](http://eslint.org/docs/rules/no-unused-vars)
 
   ```js
-  function myFunction（）{
-    var result= something（）//✗避けてください
+  function myFunction () {
+    var result = something()   // ✗ 悪い例
   }
   ```
 
-* **予約語の後にスペースを追加します。**
+* **予約語の後にスペースを入れます。**
 
-  eslint：[`keyword-spacing`]（http://eslint.org/docs/rules/keyword-spacing）
-
-  ```js
-  if（condition）{...}//✓良い
-  if（condition）{...}//✗避けてください
-  ```
-
-* **関数の宣言の括弧の前にスペースを追加します。**
-
-  eslint：[`space-before-function-paren`]（http://eslint.org/docs/rules/space-before-function-paren）
+  eslint: [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing)
 
   ```js
-  function name（arg）{...}//✓良い
-  function name（arg）{...}//✗避けてください
-
-  run（function（）{...}）//✓良い
-  run（function（）{...}）//✗避けてください
+  if (condition) { ... }   // ✓ 良い例
+  if(condition) { ... }    // ✗ 悪い例
   ```
 
-* **常に** `==`の代わりに `===`を**使用**します。<br>
-  例外： `null || undefined`は `obj == null`で確認することができます。
+* **関数の宣言の括弧の前にスペースを入れます。**
 
-  eslint：[ `eqeqeq`]（http://eslint.org/docs/rules/eqeqeq）
+  eslint: [`space-before-function-paren`](http://eslint.org/docs/rules/space-before-function-paren)
 
-  `` `js
-  if（name ===「John」）//✓良い
-  if（name == 'John'）//✗避けてください
-  `` `
+  ```js
+  function name (arg) { ... }   // ✓ 良い例
+  function name(arg) { ... }    // ✗ 悪い例
 
-  `` `js
-  if（name！== 'John'）//✓良い
-  if（name！= 'John'）//✗避けてください
-  `` `
+  run(function () { ... })      // ✓ 良い例
+  run(function() { ... })       // ✗ 悪い例
+  ```
 
-* ブランクの間に**の演算子を入れてください。**
+* `==` ではなく `===` を **常に使用** します。<br>
+  例外： `null || undefined` は `obj == null` で評価しても構いません。
 
-  eslint：[ `space-infix-ops`]（http://eslint.org/docs/rules/space-infix-ops）
+  eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq)
 
-  `` `js
-  //✓良い
+  ```js
+  if (name === 'John')   // ✓ 良い例
+  if (name == 'John')    // ✗ 悪い例
+  ```
+
+  ```js
+  if (name !== 'John')   // ✓ 良い例
+  if (name != 'John')    // ✗ 悪い例
+  ```
+
+* **演算子の前後** にスペースを入れます。
+
+  eslint: [`space-infix-ops`](http://eslint.org/docs/rules/space-infix-ops)
+
+  ```js
+  // ✓ 良い例
   var x = 2
-  var message = 'hello、「+ name +'！ '
-  `` `
+  var message = 'hello, ' + name + '!'
+  ```
 
-  `` `js
-  //✗避けてください
-  var x = 2
-  var message = 'hello、「+ name +'！ '
-  `` `
+  ```js
+  // ✗ 悪い例
+  var x=2
+  var message = 'hello, '+name+'!'
+  ```
 
-* **カンマの後にスペース**があります。
+* **カンマの後にスペースを入れます。**
 
-  eslint：[ `comma-spacing`]（http://eslint.org/docs/rules/comma-spacing）
+  eslint: [`comma-spacing`](http://eslint.org/docs/rules/comma-spacing)
 
-  `` `js
-  //✓良い
-  var list = [1、2、3、4]
-  function greet（name、options）{...}
-  `` `
+  ```js
+  // ✓ 良い例
+  var list = [1, 2, 3, 4]
+  function greet (name, options) { ... }
+  ```
 
-  `` `js
-  //✗避けてください
+  ```js
+  // ✗ 悪い例
   var list = [1,2,3,4]
-  function greet（name、options）{...}
-  `` `
+  function greet (name,options) { ... }
+  ```
 
-* ** else文は**ブレースと同じ行に**必要があります。**
+* **elseステートメント** は波括弧と同じ行に置きます。**
 
-  eslint：[`brace-style`]（http://eslint.org/docs/rules/brace-style）
+  eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style)
 
   ```js
-  //✓良い
-  if（condition）{
-    //...
-  } else{
-    //...
+  // ✓ 良い例
+  if (condition) {
+    // ...
+  } else {
+    // ...
   }
   ```
 
   ```js
-  //✗避けてください
-  if（condition）{
-    //...
+  // ✗ 悪い例
+  if (condition) {
+    // ...
   }
-  else{
-    //...
-  }
-  ```
-
-* **複数行のif文を使用する場合、**括弧を使用する必要があります。
-
-  eslint：[`curly`]（http://eslint.org/docs/rules/curly）
-
-  ```js
-  //✓良い
-  if（options.quiet！== true）console.log（ 'done'）
-  ```
-
-  ```js
-  //✓良い
-  if（options.quiet！== true）{
-    console.log（ 'done'）
+  else {
+    // ...
   }
   ```
 
-  ```js
-  //✗避けてください
-  if（options.quiet！== true）
-    console.log（ 'done'）
-  ```
+* **複数行のifステートメント** には波括弧を使用します。
 
-*`err`関数のパラメータがある場合は**常に処理してくれるとします。**
+  eslint: [`curly`](http://eslint.org/docs/rules/curly)
 
-  eslint：[`handle-callback-err`]（http://eslint.org/docs/rules/handle-callback-err）
   ```js
-  //✓良い
-  run（function（err）{
-    if（err）throw err
-    window.alert（ 'done'）
-  }）
+  // ✓ 良い例
+  if (options.quiet !== true) console.log('done')
   ```
 
   ```js
-  //✗避けてください
-  run（function（err）{
-    window.alert（ 'done'）
-  }）
+  // ✓ 良い例
+  if (options.quiet !== true) {
+    console.log('done')
+  }
   ```
-
-***常にブラウザ全域接頭辞には、**`window`を付ける必要があります。<br>
-  例外の場合に`document`、` console`、`navigator`。
-
-  eslint：[`no-undef`]（http://eslint.org/docs/rules/no-undef）
 
   ```js
-  window.alert（ 'hi'）//✓良い
+  // ✗ 悪い例
+  if (options.quiet !== true)
+    console.log('done')
   ```
 
-  * **複数行の空白を許可していません。**
+* `err` 引数がある場合は **常に処理します。**
 
-    eslint：[ `no-multiple-empty-lines`]（http://eslint.org/docs/rules/no-multiple-empty-lines）
+  eslint: [`handle-callback-err`](http://eslint.org/docs/rules/handle-callback-err)
+  ```js
+  // ✓ 良い例
+  run(function (err) {
+    if (err) throw err
+    window.alert('done')
+  })
+  ```
 
-    `` `js
-    //✓良い
-    var value = "hello world」
-    console.log（value）
-    `` `
+  ```js
+  // ✗ 悪い例
+  run(function (err) {
+    window.alert('done')
+  })
+  ```
 
-    `` `js
-    //✗避けてください
-    var value = "hello world」
+  * **ブラウザグローバルを宣言する** 場合には、 `/* global */` コメントを付加します。<br>
+    例外: `window`, `document`, `navigator`.<br>
+    `open`, `length`, `event`, `name`のような漠然とした名前を、ブラウザグローバルで偶発的に使用することを防ぎます
+
+    ```js
+    /* global alert, prompt */
+
+    alert('hi')
+    prompt('ok?')
+    ```
+
+    明示的に`window`を記述することで、その関数やプロパティを参照することはできますが、` window`の代わりに`self`を使うワーカーでは動作しません。
+
+    eslint: [`no-undef`](http://eslint.org/docs/rules/no-undef)
+
+    ```js
+    window.alert('hi')   // ✓ 良い例
+    ```
+
+* **複数行の空白行は避けます。**
+
+  eslint：[ `no-multiple-empty-lines`]（http://eslint.org/docs/rules/no-multiple-empty-lines）
+
+  eslint: [`no-multiple-empty-lines`](http://eslint.org/docs/rules/no-multiple-empty-lines)
+
+  ```js
+  // ✓ 良い例
+  var value = 'hello world'
+  console.log(value)
+  ```
+
+  ```js
+  // ✗ 悪い例
+  var value = 'hello world'
 
 
-    console.log（value）
-    `` `
+  console.log(value)
+  ```
 
-  複数行の**三項演算子**を使用する場合は `？`と ``をそれぞれの行に処理する必要があります。
+* 複数行の **三項演算子** を使用する場合は、`?`と`:`をそれぞれの行の先頭に置きます。
 
-    eslint：[ `operator-linebreak`]（http://eslint.org/docs/rules/operator-linebreak）
+  eslint: [`operator-linebreak`](http://eslint.org/docs/rules/operator-linebreak)
 
-    `` `js
-    //✓良い
-    var location = env.development？ 'localhost'： 'www.api.com」
+  ```js
+  // ✓ 良い例
+  var location = env.development ? 'localhost' : 'www.api.com'
 
-    //✓良い
-    var location = env.development
-      ？ 'localhost'
-      ：「www.api.com」
+  // ✓ 良い例
+  var location = env.development
+    ? 'localhost'
+    : 'www.api.com'
 
-    //✗避けてください
-    var location = env.development？
-      'localhost'：
-      「www.api.com」
-    `` `
+  // ✗ 悪い例
+  var location = env.development ?
+    'localhost' :
+    'www.api.com'
+  ```
 
-  * ** var宣言の場合**それぞれ独自に宣言する必要があります。
+* **varによる宣言** では、宣言ごとにvarステートメントを書きます。
 
-    eslint：[ `one-var`]（http://eslint.org/docs/rules/one-var）
+  eslint: [`one-var`](http://eslint.org/docs/rules/one-var)
 
-    `` `js
-    //✓良い
-    var silent = true
-    var verbose = true
+  ```js
+  // ✓ 良い例
+  var silent = true
+  var verbose = true
 
-    //✗避けてください
-    var silent = true、verbose = true
+  // ✗ 悪い例
+  var silent = true, verbose = true
 
-    //✗避けてください
-    var silent = true、
-        verbose = true
-    `` `
+  // ✗ 悪い例
+  var silent = true,
+      verbose = true
+  ```
 
-* **条件の割り当てを**さらに括弧で囲みます。これは式が等号（ `===`）のミスではなく、意図的に割り当て（ `=`）であることを明らかにします。
+* **代入を含んだ条件** はさらに括弧で囲みます。これは式が等号(`===`)のミスではなく、意図的に代入(`=`)であることを明示するものです。
 
-  eslint：[ `no-cond-assign`]（http://eslint.org/docs/rules/no-cond-assign）
+  eslint: [`no-cond-assign`](http://eslint.org/docs/rules/no-cond-assign)
 
-  `` `js
-  //✓良い
-  while（（m = text.match（expr）））{
+  ```js
+  // ✓ 良い例
+  while ((m = text.match(expr))) {
     // ...
   }
 
-  //✗避けてください
-  while（m = text.match（expr））{
+  // ✗ 悪い例
+  while (m = text.match(expr)) {
     // ...
   }
-  `` `
+  ```
 
-*行の中括弧で処理する場合は、スペースを追加します。
+* **1行のブロックでは波括弧の内側にスペースを入れます。**
 
-  eslint：[ `block-spacing`]（http://eslint.org/docs/rules/block-spacing）
+  eslint: [`block-spacing`](http://eslint.org/docs/rules/block-spacing)
 
-  `` `js
-    function foo（）{return true} //✗避けてください
-    function foo（）{return true} //✓良い
-  `` `
+  ```js
+    function foo () {return true}    // ✗ 悪い例
+    function foo () { return true }  // ✓ 良い例
+  ```
 
-* **変数や関数名使用時キャメルケース（camelcase）を使用します。**
+* **変数や関数名にはキャメルケース（camelcase）を使用します。**
 
-  eslint：[ `camelcase`]（http://eslint.org/docs/rules/camelcase）
+  eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase)
 
-  `` `js
-    function my_function（）{} //✗避けてください
-    function myFunction（）{} //✓良い
+  ```js
+    function my_function () { }    // ✗ 悪い例
+    function myFunction () { }     // ✓ 良い例
 
-    var my_var = 'hello' //✗避けてください
-    var myVar = 'hello' //✓良い
-  `` `
+    var my_var = 'hello'           // ✗ 悪い例
+    var myVar = 'hello'            // ✓ 良い例
+  ```
 
-* **後ろにコンマは許可されません。**
+* **最後に付随するカンマは避けます。**
 
-  eslint：[ `comma-dangle`]（http://eslint.org/docs/rules/comma-dangle）
+  eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle)
 
-  `` `js
+  ```js
     var obj = {
-      message： 'hello'、//✗避けてください
+      message: 'hello',   // ✗ 悪い例
     }
-  `` `
+  ```
 
-* **カンマを使用する場合は、現在の行の最後にする必要があります。**
+* **カンマは行末に配置します。**
 
-  eslint：[ `comma-style`]（http://eslint.org/docs/rules/comma-style）
+  eslint: [`comma-style`](http://eslint.org/docs/rules/comma-style)
 
-  `` `js
+  ```js
     var obj = {
-      foo： 'foo'
-      、bar： 'bar' //✗避けてください
+      foo: 'foo'
+      ,bar: 'bar'   // ✗ 悪い例
     }
 
     var obj = {
-      foo： 'foo'、
-      bar： 'bar' //✓良い
+      foo: 'foo',
+      bar: 'bar'   // ✓ 良い例
     }
-  `` `
+  ```
 
-* **点（Dot）は、各属性と同じ行にする必要があります。**
+* **ドットはプロパティと同じ行に配置します。**
 
-  eslint：[ `dot-location`]（http://eslint.org/docs/rules/dot-location）
+  eslint: [`dot-location`](http://eslint.org/docs/rules/dot-location)
 
-  `` `js
-    console。
-      log（ 'hello'）//✗避けてください
+  ```js
+    console.
+      log('hello')  // ✗ 悪い例
 
     console
-      .log（ 'hello'）//✓良い
-  `` `
+      .log('hello') // ✓ 良い例
+  ```
 
 * **ファイルは、改行で終わる必要があります。**
 
