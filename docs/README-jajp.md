@@ -549,163 +549,165 @@ Service Workerでは、次のようになります。
 /* eslint-env serviceworker */
 ```
 
-## MarkdownまたはHTMLファイル内のコードを確認することができますか？
+## MarkdownやHTMLファイル内のコードを確認することはできますか？
 
-Markdownファイル内のコードを確認するには、[ `standard-markdown`]（https://www.npmjs.com/package/standard-markdown）を使用してください。
+Markdownファイル内のコードを確認するには、[`standard-markdown`](https://www.npmjs.com/package/standard-markdown)を使用してください。
 
-またはMarkdown、HTML、および他の多くの種類の言語ファイルのコードを確認することができるESLintプラグインがあります。
+あるいは、Markdown、HTMLの他、多くの言語の中にあるコードを確認するESLintプラグインがあります。
 
-Markdownファイル内のコードを確認するには、ESLintプラグインを使用してください。
+Markdownファイル内のコードを確認するには、次のESLintプラグインを使用してください。
 
 ```bash
 $ npm install eslint-plugin-markdown
 ```
 
-その後、コードブロック内のJSを確認するには、以下を実行してください。
+そして、コードブロック内のJSを確認するには、次のコマンドを実行してください。
 
 ```bash
-$ standard--plugin markdown」**/*。md」
+$ standard --plugin markdown '**/*.md'
 ```
 
-HTMLファイル内のコードを確認するには、ESLintプラグインを使用してください。
+HTMLファイル内のコードを確認するには、次のESLintプラグインを使用してください。
 
 ```bash
 $ npm install eslint-plugin-html
 ```
 
-その後、`<script>`タグ内にあるJSを確認するには、以下を実行してください。
+そして、`<script>`タグ内にあるJSを確認するには、次のコマンドを実行してください。
 
 ```bash
-$ standard--plugin html」**/*。html」
+$ standard --plugin html '**/*.html'
 ```
 
 ## Git `pre-commit` hookはありますか？
 
-面白い質問ですね！
+面白い質問ですね!
 
-`` `bash
-＃！/ bin / bash
+```bash
+#!/bin/bash
 
-＃コミットのために準備されたすべてのJavaScriptファイルは、標準コードのスタイルを通過することを確認します。
-function xargs-r（）{
-  ＃Portable version of "xargs -r" The -r flag is a GNU extension that
-  ＃prevents xargs from running if there are no input files。
-  if IFS = read -r -d $ '\ n' path; then
-    {echo "$ path"; cat; } | xargs $ @
+# Ensure all JavaScript files staged for commit pass standard code style
+function xargs-r() {
+  # Portable version of "xargs -r". The -r flag is a GNU extension that
+  # prevents xargs from running if there are no input files.
+  if IFS= read -r -d $'\n' path; then
+    { echo "$path"; cat; } | xargs $@
   fi
 }
-git diff --name-only --cached --relative | grep '\ .jsx \？$' | sed 's / [^ [：alnum：]] / \\＆/ g' | xargs-r -E '' -t standard
-if [[$？ -ne 0]]; then
-  echo 'JavaScript Standard Style errors were detected。 Aborting commit」
+git diff --name-only --cached --relative | grep '\.jsx\?$' | sed 's/[^[:alnum:]]/\\&/g' | xargs-r -E '' -t standard
+if [[ $? -ne 0 ]]; then
+  echo 'JavaScript Standard Style errors were detected. Aborting commit.'
   exit 1
 fi
-`` `
+```
 
-##出力の両方を、華やかで*きれい*作成するにはどうすればいいですか？
+## カラフルで *きれい* な出力を作成するにはどうすればいいですか？
 
-内蔵された出力は、シンプルで簡単ですが、輝くものにしたい場合、[snazzy]（https://www.npmjs.com/package/snazzy）インストールしてください。
+標準の出力はシンプルで簡単ですが、飾りたい場合、[snazzy](https://www.npmjs.com/package/snazzy)インストールしてください。
 
-`` `bash
+```bash
 $ npm install snazzy
-`` `
+```
 
 そして次のコマンドを実行します。
 
-`` `bash
+```bash
 $ standard --verbose | snazzy
-`` `
+```
 
+以下のようなものもあります。
 [standard-tap](https://www.npmjs.com/package/standard-tap),
 [standard-json](https://www.npmjs.com/package/standard-json),
 [standard-reporter](https://www.npmjs.com/package/standard-reporter),
-[standard-summary](https://www.npmjs.com/package/standard-summary)도 있습니다..
+[standard-summary](https://www.npmjs.com/package/standard-summary)
 
 ## Node.js APIはありますか？
 
-はい！
+Yes!
 
-### standard.lintText（text、[opts]、callback）`
+### `standard.lintText(text, [opts], callback)`
 
 リントに提供するソース`text`を準備します。`opts`オブジェクトを追加することができます。
 
 ```js
 {
-  cwd：''、//現在の作業ディレクトリ（デフォルト：process.cwd（））
-  filename：''、//リントテキストを含むファイルへのパス（選択すると、いくつかのeslintプラグインが必要）
-  fix：false、//自動トラブルシューティング
-  globals：[]、//宣言するカスタムグローバル変数
-  plugins：[]、//カスタムeslintプラグイン
-  envs：[]、//カスタムeslint環境
-  parser：''//カスタムjsパーサー（例えば、babel-eslint）
+  cwd: '',      // 現在作業しているディレクトリ (デフォルト: process.cwd())
+  filename: '', // 確認するファイルが含まれるパス (いくつかのESLintプラグインが必要になる場合があります)
+  fix: false,   // 自動修正
+  globals: [],  // 宣言するカスタムグローバル変数
+  plugins: [],  // 追加するESLintプラグイン
+  envs: [],     // 変更するESLintの環境設定
+  parser: ''    // カスタムjsパーサー (例: babel-eslint)
 }
 ```
 
-`package.json`が現在の作業ディレクトリで見つかった場合、追加のオプションを読み込むことができます。
+`package.json`が現在作業しているディレクトリで見つかった場合、追加のオプションガ読み込まれます。
 
-`コールバック（callback）`は`Error`と` results`オブジェクトと一緒に呼び出されています。
+`callback`は、`Error`または`results`オブジェクトとともに呼び出されます。
 
-`results`オブジェクトは、次のような属性が含まれています。
+`results`オブジェクトには、次のような属性が含まれています。
 
 ```js
-var results={
-  results：[
+var results = {
+  results: [
     {
-      filePath：''、
-      messages：[
-        {ruleId：''、message：''、line：0、column：0}
-      ]、
-      errorCount：0、
-      warningCount：0、
-      output：''//固定のソースコード（{fix：true}オプションと一緒に提供される）
+      filePath: '',
+      messages: [
+        { ruleId: '', message: '', line: 0, column: 0 }
+      ],
+      errorCount: 0,
+      warningCount: 0,
+      output: '' // 修正されたソースコード ({fix: true} を設定した場合のみ)
     }
-  ]、
-  errorCount：0、
-  warningCount：0
+  ],
+  errorCount: 0,
+  warningCount: 0
 }
 ```
 
-### results= standard.lintTextSync（text、[opts]）`
+### `results = standard.lintTextSync(text, [opts])`
 
-`standard.lintText（）`の同期バージョン。エラーが発生した場合、例外が発生します。そうでなければ`results`オブジェクトが返されます。
+`standard.lintText()`の同期バージョンでは、エラーが発生した場合、例外が発生します。そうでなければ`results`オブジェクトが返されます。
 
-### standard.lintFiles（files、[opts]、callback）`
+### `standard.lintFiles(files, [opts], callback)`
 
-指定された「files」の塊をリントに適用することができます。`opts`オブジェクトを追加することができます。
+`opts`オブジェクトを、ひとまとまりの`files`とともにLintに渡すことができます。
 
 ```js
-var opts={
-  ignore：[]、//ファイルの束を無視します。（基本的な無視ファイルが含まれています）
-  cwd：''、//現在の作業ディレクトリ（デフォルト：process.cwd（））
-  fix：false、//自動トラブルシューティング
-  globals：[]、//宣言するグローバル変数
-  plugins：[]、// eslintプラグイン
-  envs：[]、// eslint環境
-  parser：''// jsパーサー（例えば、babel-eslint）
+var opts = {
+  ignore: [],   // 無視するファイル (デフォルトは含まれています)
+  cwd: '',      // 現在作業しているディレクトリ (default: process.cwd())
+  fix: false,   // 自動修正
+  globals: [],  // 宣言するカスタムグローバル変数
+  plugins: [],  // ESLintプラグイン
+  envs: [],     // ESLintの環境設定
+  parser: ''    // jsパーサー (例: babel-eslint)
 }
 ```
 
-`callback`は` Error`と `results`オブジェクトに呼び出されます。（上記です）
+`callback`は、`Error`または`results`オブジェクトとともに呼び出されます。（上記と同じ）
 
-## `standard`貢献はどうすればいい？
+## `standard`にコントリビュートするにはどうすればいいですか？
 
-貢献を歓迎します！ [issues]（https://github.com/standard/standard/issues）や[PRs]（https://github.com/standard/standard/pulls）を確認し、そこに見えないことをしたい場合は、直接作ってください。
+コントリビュートを歓迎します！何かしたいことがあって、[issues](https://github.com/standard/standard/issues)や[PRs](https://github.com/standard/standard/pulls)を確認してそこにない場合は、作ってください。
 
-チャットをご希望ですか？ freenodeの `＃standard`チャンネルでIRCの参加者と一緒にしてください。
+チャットをご希望ですか？freenodeの`#standard`チャンネルのIRCでコントリビューターに加わってください。
 
-以下は、 `standard`生態系の重要なパッケージです。
+以下は`standard`エコシステムの重要なパッケージです。
 
-- ** [standard]（https://github.com/standard/standard）** - 現在のストレージ
-   - ** [standard-engine]（https://github.com/flet/standard-engine）** - 任意のeslintルールのcliエンジン
-   - ** [eslint-config-standard]（https://github.com/standard/eslint-config-standard）** - `standard`のeslintルール
-   - ** [eslint-config-standard-jsx]（https://github.com/standard/eslint-config-standard-jsx）** - `standard`のeslint規則（JSX）
-   - ** [eslint-plugin-standard]（https://github.com/xjamundx/eslint-plugin-standard）** - `standard`のためのカスタムeslint規則（eslintコアの一部がありません。）
-   - ** [eslint]（https://github.com/eslint/eslint）** - 強力なstandard linter
-- ** [snazzy]（https://github.com/standard/snazzy）** - standardをきれいに端末に出力できます。
-- ** [standard-www]（https://github.com/standard/standard-www）** - https://standardjs.comのコード
-- ** [semistandard]（https://github.com/Flet/semistandard）** - セミコロンが含まれているstandard（必要な場合）
+- **[standard](https://github.com/standard/standard)** - このリポジトリ
+   - **[standard-engine](https://github.com/flet/standard-engine)** - 任意のESLintルールのcliエンジン
+   - **[eslint-config-standard](https://github.com/standard/eslint-config-standard)** - `standard`のESLintルール
+   - **[eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx)** - `standard`のESLintルール (JSX)
+   - **[eslint-plugin-standard](https://github.com/xjamundx/eslint-plugin-standard)** - `standard`のためのカスタムESLintルール(ESLintコアではない部分)
+   - **[eslint](https://github.com/eslint/eslint)** - `standard`の動力源のLinter
+- **[snazzy](https://github.com/standard/snazzy)** - `standard`のきれいな端末出力
+- **[standard-www](https://github.com/standard/standard-www)** - https://standardjs.com のコード
+- **[semistandard](https://github.com/Flet/semistandard)** - セミコロンを含める`standard`（必要な場合）
+- **[standardx](https://github.com/standard/standardx)** - 調整を加えた`standard`
 
-また、多くの** [エディタプラグイン]（＃text-editor-plugins）**、** [ `standard`を使用するnpmパッケージリスト]（https://github.com/standard/standard-packages）**、 ** [ `standard`エコシステムの素敵なパッケージのリスト]（https://github.com/standard/awesome-standard）**があります。
+その他、たくさんの **[エディタプラグイン](#テキストエディタのプラグインはありますか？)** 、 **[`standard`を使用するnpmパッケージ](https://github.com/standard/standard-packages)** 、すばらしい **[`standard`エコシステムを構成するパッケージ](https://github.com/standard/awesome-standard)** があります。
 
-##ライセンス
+## ライセンス
 
 [MIT](LICENSE). Copyright (c) [Feross Aboukhadijeh](http://feross.org).
