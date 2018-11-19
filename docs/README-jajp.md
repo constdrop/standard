@@ -96,12 +96,12 @@ npm install standard--save-dev
   - [FlowやTypeScriptのようなJavascript派生言語でも使用することができますか？](#FlowやTypeScriptのようなJavascript派生言語でも使用することができますか？)
   - [Mocha、Jasmine、QUnitなどはどうすればいいですか？](#Mocha、Jasmine、QUnitなどはどうすればいいですか？)
   - [Web WorkesとService Workersはどうすればいいですか？](#Web-WorkesとService-Workersはどうすればいいですか？)
-  - [MarkdownまたはHTMLファイル内のコードを確認することができますか？]（＃markdown-または-html-ファイル - 内部の - コードを - 確認 - 数 - か）
-  - [Git`pre-commit` hookはありますか？]（＃git-pre-commit-hookが - か）
-  - [出力の両方を、華やかできれいに作成するにはどうすればいいですか？]（＃出力を - すべて - カラフルで - きれい - 作成するには - どのように - する必要が - か）
-  - [Node.js APIはありますか？]（＃nodejs-apiが - か）
-  - [`standard`貢献はどうすればいい？]（＃standard-貢献は - どのように - か）
-- [ライセンス]（＃ライセンス）
+  - [MarkdownやHTMLファイル内のコードを確認することはできますか？](#MarkdownやHTMLファイル内のコードを確認することはできますか？)
+  - [Git `pre-commit` hookはありますか？](#Git-pre-commit-hookはありますか？)
+  - [カラフルで *きれい* な出力を作成するにはどうすればいいですか？](#カラフルで-きれい-な出力を作成するにはどうすればいいですか？)
+  - [Node.js APIはありますか？](#Node.js-APIはありますか？)
+  - [`standard`にコントリビュートするにはどうすればいいですか？](#standard-にコントリビュートするにはどうすればいいですか？)
+- [ライセンス](#ライセンス)
 
 ## インストール
 
