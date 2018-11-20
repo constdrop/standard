@@ -180,24 +180,24 @@
   })
   ```
 
-  * **ブラウザグローバルを宣言する** 場合には、 `/* global */` コメントを付加します。<br>
-    例外: `window`, `document`, `navigator`<br>
-    `open`, `length`, `event`, `name`のような漠然とした名前を、ブラウザグローバルで偶発的に使用することを防ぎます
+* **ブラウザグローバルを宣言する** 場合には、 `/* global */` コメントを付加します。<br>
+  例外: `window`, `document`, `navigator`<br>
+  `open`, `length`, `event`, `name`のような漠然とした名前を、ブラウザグローバルで偶発的に使用することを防ぎます
 
-    ```js
-    /* global alert, prompt */
+  ```js
+  /* global alert, prompt */
 
-    alert('hi')
-    prompt('ok?')
-    ```
+  alert('hi')
+  prompt('ok?')
+  ```
 
-    明示的に`window`を記述することで、その関数やプロパティを参照することはできますが、`window`の代わりに`self`を使うワーカーでは動作しません。
+  明示的に`window`を記述することで、その関数やプロパティを参照することはできますが、`window`の代わりに`self`を使うワーカーでは動作しません。
 
-    eslint: [`no-undef`](http://eslint.org/docs/rules/no-undef)
+  eslint: [`no-undef`](http://eslint.org/docs/rules/no-undef)
 
-    ```js
-    window.alert('hi')   // ✓ 良い例
-    ```
+  ```js
+  window.alert('hi')   // ✓ 良い例
+  ```
 
 * **複数行の空白行は避けます。**
 
