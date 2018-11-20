@@ -31,9 +31,9 @@
 
 このモジュールは、次の3つの方法であなたの(そして皆の!)時間を節約します。
 
-- **設定が不要** プロジェクトで一貫性のあるスタイルを適用するための最も簡単な方法です。ただ入れるだけです。
-- **自動でコードをフォーマット** `standard --fix` を実行すると、乱雑なコードや一貫性のないコードと別れることができます。
-- **スタイルの問題とプログラマのエラーを早期発見** レビュワーとコントリビューターとの間の(無駄な)やり取りを排除することで、貴重なコードレビューの時間を節約します。
+- **設定不要** プロジェクトで一貫性のあるスタイルを適用するための最も簡単な方法です。ただ入れるだけです。
+- **自動コードフォーマット** `standard --fix` を実行すると、乱雑なコードや一貫性のないコードと別れることができます。
+- **スタイルの問題とプログラマのエラーの早期発見** レビュワーとコントリビューターとの間の(無駄な)やり取りを排除することで、貴重なコードレビューの時間を節約します。
 
 作るために決めることはありません。`.eslintrc`や、`.jshintrc`、`.jscsrc`ファイルの管理も不要です。すぐに使うことができます。
 
@@ -59,7 +59,7 @@ npm install standard--save-dev
 - 常に `==`の代わりに `===`を使用します。 - ただし `null || undefined`は `obj == null`で比較しても構いません。
 - node.jsで `err`パラメータは、常に処理しなければなりません。
 - ブラウザのグローバルを宣言する場合には、ファイルの先頭に `/* global */`を記述します。
-  - `open`, `length`, `event`, `name`のような漠然とした名前をブラウザグローバルで偶発的に使用することを防ぎます
+  - `open`, `length`, `event`, `name`のような漠然とした名前を、ブラウザグローバルで偶発的に使用することを防ぎます
   - 例: `/* global alert, prompt */`
   - 例外: `window`, `document`, `navigator`
 - **[その他の良いルール][5]** - *さっそく `standard`を試してみてください!*
@@ -117,7 +117,7 @@ $ npm install standard --global
 $ npm install standard --save-dev
 ```
 
-*Memo: 上記のコマンドを実行するには、[Node.js]（http://nodejs.org）と[npm]（https://npmjs.com）がインストールされている必要があります。*
+*Memo: 上記のコマンドを実行するには、[Node.js](http://nodejs.org)と[npm](https://npmjs.com)がインストールされている必要があります。*
 
 ## 使い方
 
@@ -170,9 +170,9 @@ JavaScript Standard Styleの利点は、シンプルであることです。モ�
 
 このモジュールは、次の3つの方法であなたの(そして皆の!)時間を節約します。
 
-- **設定が不要** プロジェクトで一貫性のあるスタイルを適用するための最も簡単な方法です。ただ入れるだけです。
-- **自動でコードをフォーマット** `standard --fix` を実行すると、乱雑なコードや一貫性のないコードと別れることができます。
-- **スタイルの問題とプログラマのエラーを早期発見** レビュワーとコントリビューターとの間の(無駄な)やり取りを排除することで、貴重なコードレビューの時間を節約します。
+- **設定不要** プロジェクトで一貫性のあるスタイルを適用するための最も簡単な方法です。ただ入れるだけです。
+- **自動コードフォーマット** `standard --fix` を実行すると、乱雑なコードや一貫性のないコードとさよならできます。
+- **スタイルの問題とプログラマのエラーの早期発見** レビュワーとコントリビューターとの間の(無駄な)やり取りを排除することで、貴重なコードレビューの時間を節約します。
 
 `standard`スタイルを採用することは、個人的なスタイルよりも、コードの明瞭性とコミュニティの慣習を優先することを意味します。これは、100%のプロジェクトや開発における文化に合理的とは言えないかもしれません。しかしながらオープンソースは、初心者にとって好ましくない場所になることがあります。明瞭化と自動化を行ったコントリビューターの割合は、プロジェクトをより健康的にするでしょう。
 
@@ -201,7 +201,7 @@ JavaScript Standard Styleの利点は、シンプルであることです。モ�
 [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/rentograph.png>](https://rentograph.com) | [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/eaze.png>](https://www.eaze.com) | [<img width=150 src=https://cdn.rawgit.com/standard/standard/master/docs/logos/ctrl-alt-deseat.png>](https://www.ctrlaltdeseat.com) | | |
 |---|---|---|---|---|
 
-会社以外の多くのコミュニティのメンバーが、ここに記載した[とてもたくさんのパッケージ](https://raw.githubusercontent.com/standard/standard-packages/master/all.json)で`standard`を使っています。
+会社以外でも多くのコミュニティのメンバーが、ここに記載した[とてもたくさんのパッケージ](https://raw.githubusercontent.com/standard/standard-packages/master/all.json)で`standard`を使っています。
 
 また`standard`は、GitHubの[Clean Code Linter](https://github.com/showcases/clean-code-linters)ショーケースで首位のlinterです。
 
@@ -286,7 +286,7 @@ WebStromは`standard`がIDEで直接使用可能と[標準サポートに関す�
 
 もし、手動で`standard`を構成するには、[ガイド]([webstorm-1])を参照してください。PhpStorm、IntelliJ、RubyMineなど、すべてのJetBrains製品は同様です。
 
-[webstorm-1]: docs/webstorm.md
+[webstorm-1]: docs/webstrom.md
 
 ## readmeに入れられるバッジはありますか？
 
@@ -706,7 +706,7 @@ var opts = {
 - **[semistandard](https://github.com/Flet/semistandard)** - セミコロンを含める`standard`（必要な場合）
 - **[standardx](https://github.com/standard/standardx)** - 調整を加えた`standard`
 
-その他、たくさんの **[エディタプラグイン](#テキストエディタのプラグインはありますか？)** 、 **[`standard`を使用するnpmパッケージ](https://github.com/standard/standard-packages)** 、すばらしい **[`standard`エコシステムを構成するパッケージ](https://github.com/standard/awesome-standard)** があります。
+その他にもたくさんの **[エディタプラグイン](#テキストエディタのプラグインはありますか)** 、 **[`standard`を使用するnpmパッケージ](https://github.com/standard/standard-packages)** 、すばらしい **[`standard`エコシステムを構成するパッケージ](https://github.com/standard/awesome-standard)** があります。
 
 ## ライセンス
 
