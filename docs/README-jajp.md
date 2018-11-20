@@ -304,7 +304,7 @@ Yes! プロジェクトで`standard`を使用する場合、readmeにバッジ�
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 ```
 
-## 一致しないルールがあります。変更は可能ですか？
+## 一致しないルールがあります。 変更は可能ですか？
 
 No. `standard`の大きなポイントは、コードスタイルの[自転車置場の議論][自転車置場の議論]を避けることによって、時間を節約することです。タブとスペースなどについては、オンラインで多くの議論があり、解決されることはないでしょう。これらの議論は、何かを得るときに邪魔をします。最終的には '何かを選ぶ' 必要があり、それが `standard`の哲学のすべてです。'何かを選ぶ' 賢明な意見の集合体です。場合によっては、ユーザーが自分の意見を守る上での価値を見つけるでしょう。
 
@@ -389,7 +389,7 @@ console.log('offending code goes here...')
 /* eslint-enable no-use-before-define */
 ```
 
-## グローバルnamespaceを汚染させるライブラリを使用します。「variable is not defined」エラーを回避するにはどうすればいいですか？
+## グローバルnamespaceを汚染させるライブラリを使用します。 「variable is not defined」 エラーを回避するにはどうすればいいですか？
 
 いくつかのパッケージ(例えば、`mocha`)は、関数(例えば、`describe`, `it`)をグローバルオブジェクトに配置します(悪い形!)。これらの関数が定義されていないか、コードのどこかで`require`されていない間、`standard`は定義されていない変数を使用していると警告します(一般的には、このルールは、タイプミスをキャッチするために役立ちます)。しかし、これらのグローバル変数については、エラーを無効にしたいところです。
 
@@ -417,7 +417,7 @@ $ standard --global myVar1 --global myVar2
 
 *Note: `global`と`globals`は同じです。*
 
-## 実験版JavaScript(ES Next)の新機能はどのように使用しますか？
+## 実験版JavaScript (ES Next) の新機能はどのように使用しますか？
 
 `standard`は提案プロセスの「Stage 4」にある言語機能の提案を含む、最新のECMAScript ES8(ES2017)の新機能をサポートします。
 
@@ -515,7 +515,7 @@ standard *.ts
 
 `standard`がグローバルにインストールされている場合(つまり、`npm install standard --global`)、`typescript-eslint-parser`と`eslint-plugin-typescript`も同様に、`npm install typescript-eslint-parser eslint-plugin-typescript --global`としてグローバルにインストールしてください。
 
-## Mocha、Jasmine、QUnitなどはどうすればいいですか？
+## Mocha, Jasmine, QUnitなどはどうすればいいですか？
 
 テストファイルでmochaをサポートするには、テストファイルの先頭に次のコードを追加します。
 
