@@ -117,7 +117,7 @@
   function greet (name,options) { ... }
   ```
 
-* **elseステートメント** は波括弧と同じ行に置きます。**
+* **elseステートメント** は波括弧と同じ行に置きます。
 
   eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style)
 
@@ -181,7 +181,7 @@
   ```
 
   * **ブラウザグローバルを宣言する** 場合には、 `/* global */` コメントを付加します。<br>
-    例外: `window`, `document`, `navigator`.<br>
+    例外: `window`, `document`, `navigator`<br>
     `open`, `length`, `event`, `name`のような漠然とした名前を、ブラウザグローバルで偶発的に使用することを防ぎます
 
     ```js
@@ -191,7 +191,7 @@
     prompt('ok?')
     ```
 
-    明示的に`window`を記述することで、その関数やプロパティを参照することはできますが、` window`の代わりに`self`を使うワーカーでは動作しません。
+    明示的に`window`を記述することで、その関数やプロパティを参照することはできますが、`window`の代わりに`self`を使うワーカーでは動作しません。
 
     eslint: [`no-undef`](http://eslint.org/docs/rules/no-undef)
 
@@ -498,7 +498,7 @@
   }
   ```
 
-** **変数に`delete`演算子を使用してはいけません。**
+* **変数に`delete`演算子を使用してはいけません。**
 
   eslint: [`no-delete-var`](http://eslint.org/docs/rules/no-delete-var)
 
@@ -696,7 +696,7 @@
   const discount = 0.5     // ✓ 良い例
   ```
 
-* **関数の宣言に再代入してはいけません。**
+* **宣言された関数に再代入してはいけません。**
 
   eslint: [`no-func-assign`](http://eslint.org/docs/rules/no-func-assign)
 
@@ -743,11 +743,11 @@
 
 * **不規則なスペースを入れません。**
 
-eslint: [`no-irregular-whitespace`](http://eslint.org/docs/rules/no-irregular-whitespace)
+  eslint: [`no-irregular-whitespace`](http://eslint.org/docs/rules/no-irregular-whitespace)
 
-```js
-function myFunc () /*<NBSP>*/{}   // ✗ 悪い例
-```
+  ```js
+  function myFunc () /*<NBSP>*/{}   // ✗ 悪い例
+  ```
 
 * **`__iterator__`は使用しません。**
 
@@ -774,14 +774,14 @@ function myFunc () /*<NBSP>*/{}   // ✗ 悪い例
 
 * **ラベルステートメントを使用してはいけません。**
 
-eslint: [`no-labels`](http://eslint.org/docs/rules/no-labels)
+  eslint: [`no-labels`](http://eslint.org/docs/rules/no-labels)
 
-```js
-label:
-  while (true) {
-    break label     // ✗ 悪い例
-  }
-```
+  ```js
+  label:
+    while (true) {
+      break label     // ✗ 悪い例
+    }
+  ```
 
 * **ブロックの不要なネストをしません。**
 
@@ -803,14 +803,14 @@ label:
 
   eslint: [`no-mixed-spaces-and-tabs`](http://eslint.org/docs/rules/no-mixed-spaces-and-tabs)
 
-* **インデントを除いて、複数のスペースを使用しません。**
+* **インデント以外に複数のスペースを使用しません。**
 
-eslint: [`no-multi-spaces`](http://eslint.org/docs/rules/no-multi-spaces)
+  eslint: [`no-multi-spaces`](http://eslint.org/docs/rules/no-multi-spaces)
 
-```js
-const id =    1234    // ✗ 悪い例
-const id = 1234       // ✓ 良い例
-```
+  ```js
+  const id =    1234    // ✗ 悪い例
+  const id = 1234       // ✓ 良い例
+  ```
 
 * **マルチライン文字列は使用しません。**
 
@@ -821,7 +821,7 @@ const id = 1234       // ✓ 良い例
                    world'     // ✗ 悪い例
   ```
 
-* **オブジェクトを変数に代入せずに`new`は使用しません。**
+* **オブジェクトを変数に代入しない`new`は行いません。**
 
   eslint: [`no-new`](http://eslint.org/docs/rules/no-new)
 
@@ -913,7 +913,7 @@ const id = 1234       // ✓ 良い例
   const foo = Object.getPrototypeOf(obj)  // ✓ 良い例
   ```
 
-* **変数を再度宣言してはいけません。**
+* **変数を再宣言してはいけません。**
 
   eslint: [`no-redeclare`](http://eslint.org/docs/rules/no-redeclare)
 
@@ -952,19 +952,19 @@ const id = 1234       // ✓ 良い例
 
 * **変数に自身を代入することは避けます。**
 
-eslint: [`no-self-assign`](http://eslint.org/docs/rules/no-self-assign)
+  eslint: [`no-self-assign`](http://eslint.org/docs/rules/no-self-assign)
 
-```js
-name = name   // ✗ 悪い例
-```
+  ```js
+  name = name   // ✗ 悪い例
+  ```
 
 * **変数を自身と比較することは避けます。**
 
-eslint: [`no-self-compare`](http://eslint.org/docs/rules/no-self-compare)
+  eslint: [`no-self-compare`](http://eslint.org/docs/rules/no-self-compare)
 
-```js
-if (score === score) {}   // ✗ 悪い例
-```
+  ```js
+  if (score === score) {}   // ✗ 悪い例
+  ```
 
 * **カンマ演算子は使用しません。**
 
@@ -994,7 +994,7 @@ if (score === score) {}   // ✗ 悪い例
 
   eslint: [`no-tabs`](http://eslint.org/docs/rules/no-tabs)
 
-* **通常の文字列には、テンプレートリテラルプレースホルダを含めません。**
+* **通常の文字列には、テンプレートリテラルプレースホルダーを含めません。**
 
   eslint: [`no-template-curly-in-string`](http://eslint.org/docs/rules/no-template-curly-in-string)
 
@@ -1069,7 +1069,7 @@ if (score === score) {}   // ✗ 悪い例
   }
   ```
 
-* **`finally`ブロックに処理フローを制御するステートメントを含めてはいけません。**
+* **`finally`ブロックに処理フローを制御するステートメントを書いてはいけません。**
 
   eslint: [`no-unsafe-finally`](http://eslint.org/docs/rules/no-unsafe-finally)
 
@@ -1122,11 +1122,11 @@ if (score === score) {}   // ✗ 悪い例
 
 * **不要なエスケープを使用しません。**
 
-eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
+  eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
 
-```js
-let message = 'Hell\o'  // ✗ 悪い例
-```
+  ```js
+  let message = 'Hell\o'  // ✗ 悪い例
+  ```
 
 * **importやexport、destructuring assignment(分割代入)で同じ名前に変更することはできません。**
 
@@ -1295,14 +1295,14 @@ let message = 'Hell\o'  // ✗ 悪い例
 
 * **Yoda条件式は避けます。**
 
-eslint: [`yoda`](http://eslint.org/docs/rules/yoda)
+  eslint: [`yoda`](http://eslint.org/docs/rules/yoda)
 
-```js
-if (42 === age) { }    // ✗ 悪い例
-if (age === 42) { }    // ✓ 良い例
-```
+  ```js
+  if (42 === age) { }    // ✗ 悪い例
+  if (age === 42) { }    // ✓ 良い例
+  ```
 
-##セミコロン
+## セミコロン
 
 * セミコロンは使用しません。(参考: [1](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding), [2](http：//inimino.org/%7Einimino/blog/javascript_semicolons), [3](https://www.youtube.com/watch?v=gsfbh17Ax9I))
 
@@ -1317,7 +1317,7 @@ if (age === 42) { }    // ✓ 良い例
 
   これはセミコロンを省略した場合の唯一の問題であり、`standard`はこの潜在的な問題からあなたを守ります。
 
-  (すべてのリスト: `[`, `(`, `` ` ``, `+`, `*`, `/`, `-`, `,`, `.`, これらのほとんどは実際のコードで行頭に書くことはありません。)
+  (すべてのリスト: `[`, `(`, `` ` ``, `+`, `*`, `/`, `-`, `,`, `.` - これらのほとんどは実際のコードで行頭に書くことはありません。)
 
   eslint: [`no-unexpected-multiline`](http://eslint.org/docs/rules/no-unexpected-multiline)
 
@@ -1353,7 +1353,7 @@ if (age === 42) { }    // ✓ 良い例
 
   可能な限り明確で読みやすいコードを支持するならば、うまい短縮記述は推奨されません。
 
-  このようなコードについては、
+  次のようなコードについては、
 
   ```js
   ;[1, 2, 3].forEach(bar)
@@ -1371,13 +1371,13 @@ if (age === 42) { }    // ✓ 良い例
 - [An Open Letter to JavaScript Leaders Regarding Semicolons][1]
 - [JavaScript Semicolon Insertion – Everything you need to know][2]
 
-##### 参考になる映像
+##### 参考になる映像:
 
 - [Are Semicolons Necessary in JavaScript? - YouTube][3]
 
 現在よく使用されているすべてのコードminifierは、AST-based minificationを使用するので、セミコロンがないJavaScriptを何の問題もなく処理することができます。(JavaScriptにはセミコロンは必要ではありませんので)
 
-##### *["An Open Letter to JavaScript Leaders Regarding Semicolons"][1]* からの抜粋：
+##### *["An Open Letter to JavaScript Leaders Regarding Semicolons"][1]* からの抜粋:
 
 > [Relying on automatic semicolon insertion] is quite safe, and perfectly valid JS that every browser understands. Closure compiler, yuicompressor, packer, and jsmin all can properly minify it. There is no performance impact anywhere.
 >
